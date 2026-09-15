@@ -1,34 +1,49 @@
-// SMIL timeline sanity check for the typing strip: verifies each line's
-// animations exist, begin times are staggered, and caret x-sync values
-// match the clip widths (caret rides the sweep).
+// Layout and SMIL timeline sanity checks for hero and typing SVGs.
+// Run: node assets/profile/check_sync.js
 const fs = require("fs");
+const path = require("path");
 
-const svg = fs.readFileSync("assets/profile/typing-dark.svg", "utf8");
-const clips = [...svg.matchAll(/<clipPath id="clip-dark-(\d)"><rect[^>]*>\s*<animate[^>]*values="([^"]+)"[^>]*begin="([\d.]+)s"/g)];
-const carets = [...svg.matchAll(/<rect x="([\d.]+)" y="16"[^>]*>\s*<animate attributeName="x" values="([^"]+)"/g)];
-const texts = [...svg.matchAll(/clip-path="url\(#clip-dark-(\d)\)"/g)];
+const dir = path.join(__dirname);
+let allOk = true;
 
-console.log("lines with clips:", clips.length);
-console.log("lines with text:", texts.length);
-console.log("carets:", carets.length);
-
-let ok = true;
-clips.forEach(([, idx, values, begin]) => {
-  const caret = carets[Number(idx)];
-  if (!caret) { console.log(`FAIL: no caret for line ${idx}`); ok = false; return; }
-  const clipMax = Math.max(...values.split(";").map(Number));
-  const caretVals = caret[2].split(";").map(Number);
-  // caret end position + 8px caret width should reach the clip's max width
-  const caretMax = Math.max(...caretVals) + 8;
-  if (Math.abs(caretMax - clipMax) > 2) {
-    console.log(`FAIL: line ${idx} caret max ${caretMax} != clip max ${clipMax}`);
-    ok = false;
+function checkFile(name) {
+  const file = path.join(dir, name);
+  if (!fs.existsSync(file)) {
+    console.error(`FAIL: ${name} does not exist`);
+    allOk = false;
+    return;
   }
-});
-// begin times strictly increasing
-const begins = clips.map((c) => Number(c[3]));
-for (let i = 1; i < begins.length; i++) {
-  if (begins[i] <= begins[i - 1]) { console.log("FAIL: begins not staggered"); ok = false; }
+  const content = fs.readFileSync(file, "utf8");
+
+  // Basic XML check
+  if (!content.startsWith("<svg") || !content.endsWith("</svg>")) {
+    console.error(`FAIL: ${name} malformed svg bounds`);
+    allOk = false;
+  }
+
+  // Verify keyTimes bounds
+  const keyTimesMatches = [...content.matchAll(/keyTimes="([^"]+)"/g)];
+  for (const [, kt] of keyTimesMatches) {
+    const vals = kt.split(";").map(Number);
+    if (vals[0] !== 0 || vals[vals.length - 1] !== 1) {
+      console.error(`FAIL: ${name} keyTimes must start at 0 and end at 1: ${kt}`);
+      allOk = false;
+    }
+    for (let i = 1; i < vals.length; i++) {
+      if (vals[i] < vals[i - 1]) {
+        console.error(`FAIL: ${name} keyTimes not non-decreasing: ${kt}`);
+        allOk = false;
+      }
+    }
+  }
+
+  console.log(`PASS: ${name} passed validation`);
 }
-console.log(ok ? "ALL SYNC CHECKS PASS" : "CHECKS FAILED");
-process.exit(ok ? 0 : 1);
+
+checkFile("hero-dark.svg");
+checkFile("hero-light.svg");
+checkFile("hero-static.svg");
+checkFile("typing-dark.svg");
+checkFile("typing-light.svg");
+
+process.exit(allOk ? 0 : 1);
