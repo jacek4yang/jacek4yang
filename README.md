@@ -1,27 +1,23 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Jacek Yang — Systems / Network / Security / AI. Building fast systems and tools close to the metal." width="100%">
+<!-- dark/light adaptive hero: GitHub picks the variant matching the theme -->
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/profile/hero-light.svg">
+  <img src="assets/profile/hero-dark.svg" alt="Jacek Yang — systems developer. 2186 contributions in the last year, best streak 29 days." width="100%">
+</picture>
 
-<br>
+<!-- typewriter subtitle: self-hosted SMIL animation, cycles through focus areas -->
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="assets/profile/typing-light.svg">
+  <img src="assets/profile/typing-dark.svg" alt="Rotating summary: building high-performance network software in Rust; from-scratch VLESS + REALITY; DNS resolvers; AI agents driving IDA Pro; cryptographic primitives; protocol gateways." width="700">
+</picture>
 
-**Systems · Networking · Security · AI Tooling**
+**Systems · Networking · Security · AI Tooling** — building fast systems, network
+software, reverse-engineering infrastructure and developer agents, mostly in Rust.
 
-Building fast systems, network software, reverse-engineering infrastructure,
-cryptographic experiments and developer agents — mostly in Rust.
-
-<br>
-
-**[▸ ENTER INTERACTIVE PROFILE](https://jacek4yang.github.io)** — a live network-topology visualization of my work, with a system map, project telemetry and an interactive terminal.
-
-<br>
+**[▸ ENTER INTERACTIVE PROFILE](https://jacek4yang.github.io)** — live network-topology visualization, system map, project telemetry and an interactive terminal.
 
 </div>
-
-```text
-$ whoami
-systems developer — Rust-first, everything below is production-shaped work
-with benchmarks, fuzz targets and CI behind it, not tutorials.
-```
 
 ## Selected work
 
@@ -113,5 +109,5 @@ The full interactive map — every project as a node in one system graph — liv
 <br>
 <a href="https://jacek4yang.github.io"><strong>ENTER INTERACTIVE PROFILE →</strong></a>
 <br><br>
-<sub>reverse-mcp · rust-reality · egressdns · fastcrypto-rs · cline-proxy · rnc</sub>
+<sub>profile assets are regenerated daily from live GitHub data — no external metrics services</sub>
 </div>
