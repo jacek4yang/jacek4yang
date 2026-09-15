@@ -150,13 +150,14 @@ def build(data: dict, mode: str, animated: bool) -> str:
     weeks_ = [cells_[i:i + 7] for i in range(0, len(cells_), 7)][-53:]
     fai = next((i for i, wk in enumerate(weeks_) if any(d and d["count"] > 0 for d in wk)), 0)
     n_weeks = len(weeks_) - max(0, fai - 1)
-    # stretch cells so n_weeks columns fill ~740px; clamp so 7 rows clear the
-    # stats row (stats baseline y=352): y0=196, 7*19+6*3 = 151 -> ends at 347
-    cal_cell = min(19, max(CELL, (740 - (n_weeks - 1) * GAP) // n_weeks))
+    # stretch cells so n_weeks columns fill ~740px; vertical layout must keep
+    # the calendar clear of the stats row (divider y=342, numbers baseline 366):
+    # y0=194, 7*17+6*3 = 137 -> calendar ends at 331
+    cal_cell = min(17, max(CELL, (740 - (n_weeks - 1) * GAP) // n_weeks))
     cal_w = n_weeks * (cal_cell + GAP)
     # center the calendar horizontally when the account is too young to fill
     cal_x = max(PAD + 8, (W - cal_w) // 2)
-    cal_y = 196
+    cal_y = 194
     grid = contribution_grid(data, t, cal_x, cal_y, cell=cal_cell)
     cal_center_x = cal_x + cal_w / 2
 
@@ -188,15 +189,15 @@ def build(data: dict, mode: str, animated: bool) -> str:
     for i, (num, label) in enumerate(stats):
         x = sx + i * 186
         stat_els.append(
-            f'<text x="{x}" y="352" font-family="{FONT}" font-size="21" font-weight="700" '
+            f'<text x="{x}" y="366" font-family="{FONT}" font-size="21" font-weight="700" '
             f'fill="{t["fg"]}">{esc(num)}</text>'
-            f'<text x="{x}" y="370" font-family="{FONT}" font-size="10.5" '
+            f'<text x="{x}" y="384" font-family="{FONT}" font-size="10.5" '
             f'fill="{t["dim"]}">{esc(label)}</text>'
         )
-    # animated count-up is not possible in SMIL for text; instead pulse the underline
+    # divider between calendar and stats
     if animated:
         stat_els.append(
-            f'<rect x="{PAD + 12}" y="330" width="720" height="1" fill="{t["grid"]}"/>'
+            f'<rect x="{PAD + 12}" y="342" width="720" height="1" fill="{t["grid"]}"/>'
         )
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Jacek Yang — systems developer. {total} contributions in the last year, best streak {streak} days.">
