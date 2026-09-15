@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="jacek4yang — systems developer">
+  <defs><pattern id="og" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1a2230" stroke-width="1" opacity="0.4"/></pattern></defs>
+  <rect width="1200" height="630" fill="#0b0f18"/>
+  <rect width="1200" height="630" fill="url(#og)"/>
+  <rect width="1200" height="630" fill="#05070d" opacity="0.35"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 110 210 L 190 315 L 110 420" stroke="#5eead4" stroke-width="26"/>
+    <path d="M 250 190 V 385 Q 250 428 202 428 H 178" stroke="#e8edf5" stroke-width="26"/>
+  </g>
+  <rect x="262" y="398" width="34" height="34" rx="3" fill="#4cc2ff"/>
+  <text x="360" y="300" font-family="ui-monospace, 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="72" font-weight="700" letter-spacing="6" fill="#e8edf5">JACEK YANG</text>
+  <text x="362" y="352" font-family="ui-monospace, 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="24" letter-spacing="7" fill="#5eead4">SYSTEMS / NETWORK / SECURITY / AI</text>
+  <text x="362" y="400" font-family="ui-monospace, 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="19" fill="#8b95a7">github.com/jacek4yang</text>
+  <g stroke="#1a2230" stroke-width="1">
+    <line x1="360" y1="430" x2="1090" y2="430"/>
+  </g>
+  <text x="360" y="470" font-family="ui-monospace, 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace" font-size="16" fill="#8b95a7" opacity="0.8">rust-reality &#183; egressdns &#183; reverse-mcp &#183; fastcrypto-rs &#183; cline-proxy &#183; rnc</text>
+  <g stroke="#8b95a7" stroke-width="2" opacity="0.7" fill="none">
+    <path d="M 40 76 V 40 H 76"/>
+    <path d="M 1124 40 H 1160 V 76"/>
+    <path d="M 1160 554 V 590 H 1124"/>
+    <path d="M 76 590 H 40 V 554"/>
+  </g>
+</svg>

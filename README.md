@@ -1,9 +1,27 @@
-# <img src="assets/mono.svg" alt="j4y" width="28" align="top">&nbsp; jacek4yang
+<div align="center">
 
-Systems developer. Rust-first — everything below is production-shaped work
-with benchmarks, fuzz targets, and CI behind it, not tutorials.
+<img src="assets/hero.svg" alt="Jacek Yang — Systems / Network / Security / AI. Building fast systems and tools close to the metal." width="100%">
 
 <br>
+
+**Systems · Networking · Security · AI Tooling**
+
+Building fast systems, network software, reverse-engineering infrastructure,
+cryptographic experiments and developer agents — mostly in Rust.
+
+<br>
+
+**[▸ ENTER INTERACTIVE PROFILE](https://jacek4yang.github.io)** — a live network-topology visualization of my work, with a system map, project telemetry and an interactive terminal.
+
+<br>
+
+</div>
+
+```text
+$ whoami
+systems developer — Rust-first, everything below is production-shaped work
+with benchmarks, fuzz targets and CI behind it, not tutorials.
+```
 
 ## Selected work
 
@@ -11,79 +29,89 @@ with benchmarks, fuzz targets, and CI behind it, not tutorials.
 <tr>
 <td width="50%" valign="top">
 
-### [reverse-mcp](https://github.com/jacek4yang/reverse-mcp)
-MCP server exposing IDA Pro's headless `idalib` for AI-driven binary
-analysis — stdio and HTTP transports. The flagship: actively developed,
-built for real reversing workflows.
+### [rust-reality](https://github.com/jacek4yang/rust-reality) — `NETWORK` `CRYPTO`
+From-scratch VLESS + REALITY + Vision proxy server. Xray-compatible data path, kernel `splice` relays, zero-copy record batching.
 <br><br>
-`Rust` · `IDA 9.2` · `MCP`
+**~5.9 MB Rust + hand-written assembly** for session-establishment crypto, tuned for 1-vCPU hosts. Handoff topology sheds ~82% line-download CPU/GiB.
 
 </td>
 <td width="50%" valign="top">
 
-### [rust-reality](https://github.com/jacek4yang/rust-reality)
-From-scratch implementation of VLESS and REALITY. ~5.9 MB of Rust plus a
-hand-written assembly layer for session-establishment crypto on 1-vCPU hosts.
+### [egressdns](https://github.com/jacek4yang/egressdns) — `NETWORK` `DNS`
+Egress-aware adaptive DNS caching forwarder for enterprise LANs. DoT/DoH2/DoH3/DoQ upstreams with DNSSEC validation.
 <br><br>
-`Rust` · `Assembly` · `TLS 1.3`
+**Measures, never guesses**: transport, HTTP version and hedging decisions come from live network evidence; degrades to a correct plain caching forwarder.
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### [egressdns](https://github.com/jacek4yang/egressdns)
-Egress-aware DNS resolver: Cloudflare anycast optimization, DNSSEC
-validation, hot reload. Packaging, fuzzing, and benches included.
+### [reverse-mcp](https://github.com/jacek4yang/reverse-mcp) — `REVERSE` `AGENTS`
+MCP server giving AI agents headless, programmatic control of IDA Pro 9.2 via native `idalib` — 17 tools, stdio/HTTP, no Python bridge.
 <br><br>
-`Rust` · `DNSSEC` · `Networking`
+**Optimistic concurrency & honest capabilities**: `expected_revision` on every mutation; unimplemented ops fail loudly instead of faking success.
 
 </td>
 <td width="50%" valign="top">
 
-### [fastcrypto-rs](https://github.com/jacek4yang/fastcrypto-rs)
-Cryptographic R&amp;D staging for rust-reality: benchmarks X25519, AES-GCM,
-SHA-2, and ML-KEM-768 against their production incumbents on real workload
-shapes — keeps what wins, delegates what doesn't.
+### [fastcrypto-rs](https://github.com/jacek4yang/fastcrypto-rs) — `CRYPTO` `PERF`
+Cryptographic R&D staging for rust-reality: benchmarks X25519, AES-GCM, SHA-2 and ML-KEM-768 against production incumbents.
 <br><br>
-`Assembly` · `Rust` · `Cryptography`
+**Keeps only what wins on real workload shapes** — measured ~12.3% server CPU/session win for owned X25519 — everything else stays delegated.
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### [grok-build](https://github.com/jacek4yang/grok-build)
-Fork of xai-org's model-agnostic coding-agent harness — native
-multi-provider protocols, semantic tool execution, cross-platform runtime.
-Used and extended as a daily driver.
+### [cline-proxy](https://github.com/jacek4yang/cline-proxy) — `AGENTS` `PROTOCOL`
+Rust gateway exposing OpenAI + Anthropic APIs over a pool of Cline keys, built to run Claude Code against Cline.
 <br><br>
-`Rust` · `Agents` · `Tooling`
+**Strict 429-only key rotation invariant** with Healthy→Cooling→HalfOpen state machine; streams translated statefully between SSE dialects.
 
 </td>
 <td width="50%" valign="top">
 
-### [rnc](https://github.com/jacek4yang/rnc)
-Binary-safe netcat in Rust with native Windows Unicode and full
-UTF-8 / GBK / GB18030 support over TCP and UDP. Built for CTF and
-CJK-heavy terminal work that GNU netcat mangles.
+### [rnc](https://github.com/jacek4yang/rnc) — `TOOLS` `WINDOWS`
+Binary-safe netcat in Rust for TCP/UDP pipelines and CTF terminals. Static native `nc.exe`, no runtime dependencies.
 <br><br>
-`Rust` · `Windows` · `Sockets`
+**Full UTF-8 / GBK / GB18030 console conversion** — native Windows Unicode where GNU netcat mangles CJK byte streams.
 
 </td>
 </tr>
 </table>
 
-<br>
-
-## Also in the orbit
-
-- **[agent-pulse](https://github.com/jacek4yang/agent-pulse)** — Windows scheduler for resuming terminal AI coding agents
-- **[cline-proxy](https://github.com/jacek4yang/cline-proxy)** — Rust gateway aggregating Cline API keys, Claude Code / OpenAI compatible
-- **[rime-xhup-flow](https://github.com/jacek4yang/rime-xhup-flow)** — 小鹤音形 Rime scheme with a graphical training platform
+<details>
+<summary><strong>Also in the orbit</strong></summary>
 
 <br>
 
-## Focus
+- **[agent-pulse](https://github.com/jacek4yang/agent-pulse)** — Windows scheduler that resumes terminal AI coding agents (waits out quota resets, refocuses, types `continue`)
+- **[codebuddy-proxy](https://github.com/jacek4yang/codebuddy-proxy)** — Anthropic Messages API proxy for CodeBuddy, tuned for Claude Code
+- **[rust-xhttp](https://github.com/jacek4yang/rust-xhttp)** — pure-Rust XHTTP/VLESS server compatible with official Xray-core clients
+- **[veilweave](https://github.com/jacek4yang/veilweave)** — post-quantum, forward-secret VLESS over WebSocket, end-to-end through Cloudflare Workers
+- **[rime-xhup-flow](https://github.com/jacek4yang/rime-xhup-flow)** — 小鹤音形 Rime input scheme with graphical trainer and cross-platform tooling
 
-`reverse engineering` · `network protocols` · `applied cryptography` · `agent infrastructure` · `Windows internals`
+</details>
+
+<br>
+
+## Technical focus
+
+```text
+SYSTEMS    Rust · async runtimes · zero-copy · kernel splice · assembly hot paths
+NETWORK    TCP/IP · DNS/DoH/DoQ · proxy protocols (VLESS/REALITY/XHTTP) · QUIC
+SECURITY   reverse engineering · binary analysis (IDA/idalib) · applied cryptography · DNSSEC
+AGENTS     coding agents · MCP servers · protocol gateways · developer infrastructure
+```
+
+The full interactive map — every project as a node in one system graph — lives at
+**[jacek4yang.github.io](https://jacek4yang.github.io)**.
+
+<div align="center">
+<br>
+<a href="https://jacek4yang.github.io"><strong>ENTER INTERACTIVE PROFILE →</strong></a>
+<br><br>
+<sub>reverse-mcp · rust-reality · egressdns · fastcrypto-rs · cline-proxy · rnc</sub>
+</div>

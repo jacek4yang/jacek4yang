@@ -1,0 +1,7 @@
+
+# local asset-render deps
+node_modules/
+package.json
+package-lock.json
+__pycache__/
+pages-site/

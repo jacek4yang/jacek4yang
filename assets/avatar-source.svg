@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="jacek4yang avatar">
+  <defs>
+    <radialGradient id="abg" cx="34%" cy="28%" r="90%">
+      <stop offset="0%" stop-color="#101726"/>
+      <stop offset="100%" stop-color="#05070d"/>
+    </radialGradient>
+    <pattern id="ag" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1a2230" stroke-width="1" opacity="0.35"/></pattern>
+    <clipPath id="around"><circle cx="256.0" cy="256.0" r="256.0"/></clipPath>
+  </defs>
+  <g clip-path="url(#around)">
+    <rect width="512" height="512" fill="url(#abg)"/>
+    <rect width="512" height="512" fill="url(#ag)"/>
+    <!-- faint orbit ring (network node motif) -->
+    <circle cx="256.0" cy="256.0" r="196" fill="none" stroke="#1a2230" stroke-width="2"/>
+    <circle cx="452.0" cy="256.0" r="5" fill="#7c8cf8" opacity="0.9"/>
+    <!-- geometry: angle bracket + J -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 150 168 L 252 256 L 150 344" stroke="#5eead4" stroke-width="34"/>
+      <path d="M 330 152 V 316 Q 330 366 276 366 H 246" stroke="#e8edf5" stroke-width="34"/>
+    </g>
+    <!-- terminal cursor block, bottom right -->
+    <rect x="344" y="336" width="44" height="44" rx="4" fill="#4cc2ff"/>
+  </g>
+  <circle cx="256.0" cy="256.0" r="252.0" fill="none" stroke="#1a2230" stroke-width="3" opacity="0.9"/>
+</svg>
